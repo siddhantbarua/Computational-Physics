@@ -32,8 +32,11 @@ function [T, Y_fit] = CurveFit(a, b, Y)
                 A(:, j) = [P0(X(j)); P1(X(j)); P2(X(j)); P3(X(j)); P4(X(j)); P5(X(j))];
         end
 
-        % Calculate coefficients alpha 
-        alpha = (A * A') \ (A * Y);
+        % Calculate coefficients alpha using Gaussian Elimination. Solve C*alpha = D
+        C = (A*A');
+        D = A*Y;
+        C = [C, D];
+        alpha = GaussElim(C);
         
         % Generate Y_fit points
         T = linspace(a, b, 500)';

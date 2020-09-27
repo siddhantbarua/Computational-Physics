@@ -2,7 +2,7 @@
 %% Fit curve to data points using functions defined in GaussElim.m and CurveFit.m
 
 % Define Function to generate data points
-F = @(x) x.^5;
+F = @(x) x.^9;
 
 % Define upper and lower bound of X range, a and b, and number of data points n
 a = -20;
