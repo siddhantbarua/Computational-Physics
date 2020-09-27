@@ -6,11 +6,16 @@
 %% Inputs ->
 %% a : Lower limit
 %% b : Upper Limit
-%% 
+%% Y : Array of the data points
+%%
+%% Outputs ->
+%% T : Array of X values for fitting function
+%% Y_fit : Values of fitting function 
 
 % Curve fitting function
 function [T, Y_fit] = CurveFit(a, b, Y)
-         
+
+        % Define Legendre polynomials
         P0 = @ (x) 1;
         P1 = @ (x) x;
         P2 = @ (x) (3*x^2 - 1) / 2;
@@ -20,22 +25,21 @@ function [T, Y_fit] = CurveFit(a, b, Y)
        
         % Number of numbers in input
         n = length(Y);
-
         X = linspace(a, b, n)';
 
         % Construct matrix A
-        
         for j = 1:n
                 A(:, j) = [P0(X(j)); P1(X(j)); P2(X(j)); P3(X(j)); P4(X(j)); P5(X(j))];
         end
 
-
+        % Calculate coefficients alpha 
         alpha = (A * A') \ (A * Y);
         
         % Generate Y_fit points
         T = linspace(a, b, 500)';
        
         Y_fit = zeros(500, 1);
+        % Calculate Fitting function
         for j = 1:500
                 Y_fit(j) = alpha(1)*P0(T(j)) + alpha(2)*P1(T(j)) + alpha(3)*P2(T(j)) + alpha(4)*P3(T(j))+ alpha(5)*P4(T(j)) + alpha(6)*P5(T(j));
         end
