@@ -1,0 +1,2 @@
+% Use Newton Rhapson Method
+
