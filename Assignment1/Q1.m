@@ -4,6 +4,8 @@
 
 %% PART A
 %%-----------------------------------------------------------------------------------------
+disp("PART A");
+disp("----------")
 % Number of random numbers required
 num = 1000;
 
@@ -20,11 +22,13 @@ num_bins = 100;
 hist(random_nums, nbins=num_bins);
 
 % Calculate mean and variance
-printf("Mean:%d\nVariance:%d\n", mean(random_nums), var(random_nums));
+printf("Mean:%d\nVariance:%d\nStandard Deviation:%d\n\n\n", mean(random_nums), var(random_nums), std(random_nums));
 
 
 %% PART B
 %%------------------------------------------------------------------------------------------
+disp("PART B");
+disp("----------")
 % Define length of array
 len = 10;
 
@@ -41,10 +45,13 @@ arr = Sort(arr);
 % Display sorted array
 disp("Sorted array : ");
 disp(arr);
+printf("\n\n");
 
 
 %% PART C
 %%------------------------------------------------------------------------------------------
+disp("PART C");
+disp("----------")
 % Find largest, smallest, mean, median and standard deviation.
 arr_min = min(arr);
 arr_max = max(arr);
@@ -52,5 +59,5 @@ arr_mean = mean(arr);
 arr_median = median(arr);
 arr_stddev = std(arr);
 
-printf("Smallest element:%d\nLargest element:%d\nMean of array:%d\nMedian of array:%d\nStandard deviation of array:%d\n", arr_min, arr_max, arr_mean, arr_median, arr_stddev);
+printf("Smallest element:%d\nLargest element:%d\nMean of array:%d\nMedian of array:%d\nStandard deviation of array:%d\n\n", arr_min, arr_max, arr_mean, arr_median, arr_stddev);
         
