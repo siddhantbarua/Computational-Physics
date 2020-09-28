@@ -3,20 +3,20 @@
 
 
 % Inner radius of torus
-a = 2;
+a = 5;
 % Outer radius of torus 
-b = 8;
+b = 11;
 % Mean Radius R
 R = (a + b) / 2;
 % Radius of inner tube 
 R1 = (b - a) / 2;
 
 % Radius of sphere
-r = 4;
+r = 6;
 
 % Parameters for plane (cx + ey + z = 0)
-c = 5;
-e = 8;
+c = 12;
+e = -7;
 
 % Torus function
 F1 = @ (x, y, z) (x^2 + y^2 + z^2 + R^2 - R1^2)^2 - 4*(R^2)*(x^2 + y^2); 
@@ -44,7 +44,7 @@ dist = @ (x1, x2) sqrt((x1 - x2)' * (x1 - x2));
 epsilon = 1.0e-8;
 
 % Initial Guess
-X = [-5; -3; 2];
+X = [-1; 2; 0];
 
 J = [F1x(X(1), X(2), X(3)), F1y(X(1), X(2), X(3)), F1z(X(1), X(2), X(3)); 
         F2x(X(1), X(2), X(3)), F2y(X(1), X(2), X(3)), F2z(X(1), X(2), X(3)); 
