@@ -7,7 +7,7 @@
 disp("PART A");
 disp("----------")
 % Number of random numbers required
-num = 1000;
+num = 5000;
 
 % Define lower and upper bounds
 lower = -1000;

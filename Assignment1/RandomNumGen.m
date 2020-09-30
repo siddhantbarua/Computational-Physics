@@ -2,7 +2,7 @@
 %% 
 %%
 %% Input parameters-> 
-%% n: Number of random numbrs required; 
+%% n: Number of random numbers required; 
 %% lower : Lower bound of range of random numbers needed; 
 %% upper : Upper bound of random numbers needed
 %%

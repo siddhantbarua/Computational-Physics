@@ -2,8 +2,8 @@
 %% Find eigenvalues of a particle in a finitely deep potential well, using Newton Rhapson Method
 
 % Define parameters. L = Length of well, V = Potential V0
-L = 10;
-V = 10;
+L = 2.5;
+V = 1.5;
 
 % Plot Functions initially, to see intersection points
 %------------------------------------------------------------------------------------------
@@ -11,9 +11,9 @@ V = 10;
 % LHS 
 F1 = @ (x) sqrt((1-x) ./ x);
 % RHS for symmetric
-F2 = @ (x) tan(0.4*L*sqrt(V*x));
+F2 = @ (x) tan(2.7*L*sqrt(V*x));
 % RHS for asymmetric
-F3 = @ (x) -cot(0.4*L*sqrt(V*x));
+F3 = @ (x) -cot(2.7*L*sqrt(V*x));
 
 % Range of X values
 X = linspace(0, 1, 100)';
@@ -48,12 +48,12 @@ Fsym = @ (x) F1(x) - F2(x);
 Fasym = @ (x) F1(x) - F3(x);
 
 % Derivatives
-Fsym_x = @ (x) ((-1./x) - ((1-x)./x)) ./ (2*sqrt((1-x) ./ x)) - (L*V*(sec(2*L*sqrt(V*x) / 5)).^2) ./ (5*sqrt(V*x));
-Fasym_x = @ (x) ((-1./x) - ((1-x)./x)) ./ (2*sqrt((1-x) ./ x)) - (L*V*(csc(2*L*sqrt(V*x) / 5)).^2) ./ (5*sqrt(V*x));
+Fsym_x = @ (x) ((-1./x) - ((1-x)./x)) ./ (2*sqrt((1-x) ./ x)) - (27*L*V*(sec(2.7*L*sqrt(V*x))).^2) ./ (20*sqrt(V*x));
+Fasym_x = @ (x) ((-1./x) - ((1-x)./x)) ./ (2*sqrt((1-x) ./ x)) - (27*L*V*(csc(2.7*L*sqrt(V*x))).^2) ./ (20*sqrt(V*x));
 
 % For symmetric case
 % Initial guesses for 3 roots
-X = [0.1; 0.25; 0.5];
+X = [0.03; 0.20; 0.6];
 epsilon = 1.0e-8;
 X_new = zeros(3, 1);
 
@@ -65,12 +65,16 @@ for i=1:3
                 X_new(i) = X(i) - Fsym(X(i)) / Fsym_x(X(i));
         end
 end
+X_new
+E1 = V*X_new;
 
-E = V*X_new
+disp("For symmetric case, first 3 energy eigenvalues are:");
+disp(E1);
+printf("\n");
 
 % For asymmetric case
 % Initial guesses for 3 roots
-X1 = [0.21; 0.4; 0.6];% 0.5];
+X1 = [0.1; 0.3; 0.8]
 epsilon = 1.0e-8;
 X1_new = zeros(3, 1);
 
@@ -83,6 +87,16 @@ for i=1:3
         end
 end
 
-E1 = V*X1_new
+X1_new
+E2 = V*X1_new;
+disp("For asymmetric case, first 3 energy eigenvalues are:");
+disp(E2);
+printf("\n");
+
+% Create array of all eigenvalues. 
+E = [E1; E2];
+E = Sort(E);
+
+printf("The first 3 energy eigenvalues are: %d, %d, %d\n", E(1), E(2), E(3));
 
 
