@@ -26,8 +26,8 @@ sum = 0;
 sq_sum = 0;
 
 for i = 1:1000
-        sum += random_nums(i);
-        sq_sum += random_nums(i)^2;
+        sum = sum + random_nums(i);
+        sq_sum = sq_sum + random_nums(i)^2;
 end
 
 mean = sum / 1000;
@@ -81,7 +81,7 @@ arr_mean = arr_sum / len;
 arr_var = (arr_sq_sum / len) - arr_mean^2;
 arr_stddev = sqrt(arr_var);
 
-if mod(len, 2) != 0
+if mod(len, 2) ~= 0
         arr_median = arr((len + 1) / 2);
 else
         arr_median = (arr(len / 2) + arr(len / 2 + 1)) / 2;
