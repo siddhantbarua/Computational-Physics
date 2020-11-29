@@ -101,3 +101,8 @@ hold off
 subplot(1, 3, 3);
 plot(t(ht:ct), c(ht:ct));
 hold off;
+
+disp("Time for heating in minutes: ");
+disp(k * (ht - 1) / 60);
+disp("Time for cooling in minutes: ");
+disp(k * (ct - ht) / 60);
